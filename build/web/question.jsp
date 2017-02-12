@@ -12,7 +12,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Class Clicker</title>
+        <title>Online Survey</title>
     </head>
     <h3><i><%= OnlineSurveyModel.getInstance().getAnswerToLastQuestion(request.getParameter("userName")) %></i></h3>
     <h1>Next Question for <i><%= request.getParameter("userName") %> </i> :</h1>
