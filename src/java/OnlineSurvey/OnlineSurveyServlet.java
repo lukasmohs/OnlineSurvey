@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author lukasmohs
  */
 @WebServlet(name = "OnlineSurveyServlet",
-        urlPatterns = {"/submit","/getResults"})
+        urlPatterns = {"/submit","/results"})
 public class OnlineSurveyServlet extends HttpServlet {
     
     
@@ -55,7 +55,7 @@ public class OnlineSurveyServlet extends HttpServlet {
         }
         
         //If getResults Pattern requested, forward directly there:
-        if("/getResults".equalsIgnoreCase(request.getServletPath()))
+        if("/results".equalsIgnoreCase(request.getServletPath()))
         {
             view = request.getRequestDispatcher("results.jsp");
         }
@@ -63,21 +63,12 @@ public class OnlineSurveyServlet extends HttpServlet {
         // determine what type of device our user is
         String userAgent = request.getHeader("User-Agent");
         
-        boolean mobile;
         // prepare the appropriate DOCTYPE for the view pages
         if (userAgent != null && ((userAgent.indexOf("Android") != -1) || (userAgent.indexOf("iPhone") != -1))) {
-            mobile = true;
-            /*
-             * This is the latest XHTML Mobile doctype. To see the difference it
-             * makes, comment it out so that a default desktop doctype is used
-             * and view on an Android or iPhone.
-             */
             request.setAttribute("doctype", "<!DOCTYPE html PUBLIC \"-//WAPFORUM//DTD XHTML Mobile 1.2//EN\" \"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd\">");
         } else {
-            mobile = false;
             request.setAttribute("doctype", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
         }
-        
         view.forward(request, response);
     }
 }
