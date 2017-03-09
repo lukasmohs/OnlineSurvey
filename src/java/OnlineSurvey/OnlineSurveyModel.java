@@ -69,7 +69,11 @@ public class OnlineSurveyModel {
         }
     }
     
-    //This function saves the answer to a question for a specific user
+    /**
+     * This function saves the answer to a question for a specific user
+     * @param userName
+     * @param answerId 
+     */
     public void submitAnswer(String userName,  int answerId) {
         if(userAnswers.get(userName) != null) {
             ArrayList<Integer> previousAnswers = userAnswers.get(userName);
@@ -84,7 +88,11 @@ public class OnlineSurveyModel {
         userStatus.replace(userName,userStatus.get(userName)+1);
     }
     
-    //Returns a list of <key:value> pairs where the key is each question and the value the chosen answer for a specific user
+    /**
+     * Returns a list of <key:value> pairs where the key is each question and the value the chosen answer for a specific user
+     * @param userName
+     * @return  a list of <key:value> pairs where the key is each question and the value the chosen answer for a specific user
+     */
     public ArrayList<Pair<OnlineSurveyModelQuestion, Integer>> getUserAnswers(String userName) {
         ArrayList<Pair<OnlineSurveyModelQuestion, Integer>> specificUserAnswers = new ArrayList<Pair<OnlineSurveyModelQuestion, Integer>>();
         
@@ -94,7 +102,11 @@ public class OnlineSurveyModel {
         return specificUserAnswers;
     }
     
-    //This function calculates the number of correctly answered questions
+    /**
+     * This function calculates the number of correctly answered questions
+     * @param userName
+     * @return the number of correctly answered questions for a specific user
+     */
     public int getNumberOfCorrectAnswers(String userName) {
         int count=0;
         for(Pair<OnlineSurveyModelQuestion, Integer> p:getUserAnswers(userName)){
@@ -105,12 +117,19 @@ public class OnlineSurveyModel {
         return count;
     }
     
-    //Returns the number of all questions
+    /**
+     * Returns the number of all questions
+     * @return the number of all questions 
+     */
     public int getNumberOfQuestions(){
         return questions.size();
     }
     
-    //Provides a String to respond the user with feedback about his last answer submission
+    /**
+     * Provides a String to respond the user with feedback about his last answer submission
+     * @param userName
+     * @return response String for the user with feedback about his last answer submission
+     */
     public String getAnswerToLastQuestion(String userName) {
         if(userStatus.get(userName) == null || userStatus.get(userName)==0) {
             return "";
@@ -123,6 +142,9 @@ public class OnlineSurveyModel {
         return userStatus;
     }
 
+    /**
+     * Method that generates some initial sample questions
+     */
     private void generateQuestions() {
         //Create one question with answers
         OnlineSurveyModelQuestion questionA = new OnlineSurveyModelQuestion("What means CMU?");
