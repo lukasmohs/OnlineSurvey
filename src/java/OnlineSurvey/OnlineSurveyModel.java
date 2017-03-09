@@ -29,7 +29,9 @@ public class OnlineSurveyModel {
         } 
         return instance;
     }
-    
+    /**
+     * Constructor
+     */
     public OnlineSurveyModel() {
         //initialize data structures
         questions = new ArrayList<OnlineSurveyModelQuestion>();
@@ -38,7 +40,11 @@ public class OnlineSurveyModel {
         generateQuestions();
     }
     
-    //This function checks whether the user has completed all questions
+    /**
+     * This function checks whether 
+     * @param userName
+     * @return if the user has completed all questions
+     */
     public Boolean completedAllQuestions(String userName) {
         if(userStatus.get(userName) == null ){
             return false;
@@ -46,7 +52,11 @@ public class OnlineSurveyModel {
         return userStatus.get(userName) + 1 == questions.size();
     }
 
-    //This function returns the next question for a given username
+    /**
+     * This function returns the next question for a given username
+     * @param userName
+     * @return the next question for a given username
+     */
     public OnlineSurveyModelQuestion getNextQuestion(String userName) {
         if(!userStatus.containsKey(userName)){
             userStatus.put(userName,0);
