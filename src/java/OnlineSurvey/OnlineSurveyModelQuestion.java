@@ -18,17 +18,27 @@ public class OnlineSurveyModelQuestion {
         this. answers = new ArrayList<Pair<String, Boolean>>();
     }
     
-    //Add an answer to the question by stating whether it's a correct answer
+    /**
+     * Add an answer to the question by stating whether it's a correct answer
+     * @param answer
+     * @param correct 
+     */
     public void addAnswer(String answer, Boolean correct) {
         this.answers.add(new Pair(answer, correct));
     }
     
-    //Returns the question String
+    /**
+     * Returns the question String
+     * @return the question String
+     */
     public String getQuestion() {
         return this.question;
     }
     
-    //Returns a list of all possible answers as <key:value> pair
+    /**
+     * Returns a list of all possible answers as <key:value> pair
+     * @return a list of all possible answers as <key:value> pair
+     */
     public ArrayList<Pair<String, Boolean>> getAllAnswers(){
         return this.answers;
     }

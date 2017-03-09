@@ -21,7 +21,13 @@ import javax.servlet.http.HttpServletResponse;
         urlPatterns = {"/submit","/results"})
 public class OnlineSurveyServlet extends HttpServlet {
     
-    
+    /**
+     * Method that handels incoming get requests
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
